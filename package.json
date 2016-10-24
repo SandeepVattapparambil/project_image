@@ -1,0 +1,27 @@
+{
+  "name": "project_image",
+  "version": "1.0.0",
+  "description": "image processing project",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "materialize-css": "^0.97.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProjectImage/project_image.git"
+  },
+  "keywords": [
+    "image"
+  ],
+  "author": "Sandeep V",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ProjectImage/project_image/issues"
+  },
+  "homepage": "https://github.com/ProjectImage/project_image#readme"
+}
