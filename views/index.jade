@@ -1,6 +1,6 @@
 html
 	head
-		title Welcome
+		title Project Image | Login
 		script(src='js/jquery.js')
 		script(src='js/materialize.js')
 		link(rel='stylesheet', href='http://fonts.googleapis.com/icon?family=Material+Icons')
@@ -10,15 +10,32 @@ html
 body.lime
 .row
 	.col.s12.m8.l6.offset-m2.offset-l3
-		.card.blue-grey.darken-1
-			.card-content.white-text
-				span.card-title Card Title
-				|               
-				p
-					| I am a very simple card. I am good at containing small bits of information.
-					| I am convenient because I require little markup to use effectively.
+		.card
+			.card-content.grey-text
+				span.card-title Login
+				|                
+				.row
+					form.col.s12
+						.row
+							.input-field.col.s12
+								i.material-icons.prefix account_circle
+								|           
+								input#icon_prefix.validate(type='text', value="")
+								|           
+								label(for='icon_prefix') User Name
+							|         
+							.input-field.col.s12
+								i.material-icons.prefix vpn_key
+								|           
+								input#icon_password.validate(type='text', value="")
+								|           
+								label(for='icon_password') Password
 			|             
 			.card-action
-				a(href='#') This is a link
+			button.btn-flat.grey.waves-effect.waves-light.spaced(type='reset', name='action')
+				| Clear
+				i.material-icons.right clear
 				|               
-				a(href='#') This is a link
+				button.btn-flat.lime.waves-effect.waves-light(type='submit', name='action')
+					| Login
+					i.material-icons.right send

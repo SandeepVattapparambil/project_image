@@ -5,8 +5,8 @@
 'use strict';//Use strict syntax and semantics
 var http = require('http');//Include the Node HTTP library
 var express = require('express');//create an Express class
-
 var primary_app_object = express();//create an instance of Express class into an object
+
 primary_app_object.set('view engine', 'jade');// Set the view engine
 primary_app_object.set('views', './views');// Where to find the view files
 primary_app_object.use(express.static('./public'));//where to find static files
