@@ -14,15 +14,12 @@ primary_app_object.set('views', './views');// Where to find the view files
 primary_app_object.get('/', function (req, res) {
   res.render('index');
 });
+
+//sample route
 primary_app_object.get('/login', function (req, res) {
   res.send('Hello World! login');
 });
-primary_app_object.get('/home', function (req, res) {
-  res.send('Hello World! home');
-});
-primary_app_object.get('/about', function (req, res) {
-  res.send('Hello World! about');
-});
+
 
 //server function for the primary_app_object
 primary_app_object.listen(3000, function () {
