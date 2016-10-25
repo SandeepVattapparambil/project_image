@@ -33,7 +33,7 @@ primary_app_object.set('views', './views');// Where to find the view files
 primary_app_object.use(express.static('./public'));//where to find static files
 primary_app_object.use(responseTime());// Add the responseTime middleware
 primary_app_object.use(errorhandler());// Add the errorHander middleware
-primary_app_object.use(bodyParser.urlencoded({ extended: false }));// parse application/x-www-form-urlencoded
+primary_app_object.use(bodyParser.urlencoded({ extended: true }));// parse application/x-www-form-urlencoded
 primary_app_object.use(bodyParser.json());// parse application/json
 primary_app_object.use(errorhandler());
 primary_app_object.use(compression());
@@ -46,8 +46,14 @@ primary_app_object.get('/', function (req, res) {
 });
 //login route for app
 primary_app_object.post('/login', function (req, res) {
-  
+  var username = req.body.username;
+  var password = req.body.password;
+  console.log(username);
 });
+
+
+
+
 
 //sample route
 primary_app_object.get('/hello', function (req, res) {
