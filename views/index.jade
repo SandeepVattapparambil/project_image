@@ -15,7 +15,7 @@ body.lime
 				span.card-title Login
 				|                
 				.row
-					form.col.s12
+					form.col.s12(name='', action='', method='POST')
 						.row
 							.input-field.col.s12
 								i.material-icons.prefix account_circle
@@ -30,12 +30,14 @@ body.lime
 								input#icon_password.validate(type='text', value="")
 								|           
 								label(for='icon_password') Password
-			|             
-			div.card-action
-				button.btn-flat.grey.waves-effect.waves-light.spaced(type='reset', name='action')
-					| Clear
-					i.material-icons.right clear
-					|               
-					button.btn-flat.lime.waves-effect.waves-light(type='submit', name='action')
+							.input-field.col.s6
+								p
+									input#test5(type='checkbox')
+									|       
+									label(for='test5') Remember me!
+
+					button.btn.lime.waves-effect.waves-light.right(type='submit', name='action')
 						| Login
-						i.material-icons.right send
+			.card-action.grey.lighten-2
+				a.grey-text(href='#') Forgot Password?
+				a.grey-text.right(href='#') SignUp?
