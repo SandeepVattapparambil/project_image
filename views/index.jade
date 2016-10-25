@@ -9,7 +9,7 @@ html
 		meta(name="viewport" content="width=device-width, initial-scale=1.0") 
 body.lime
 .row
-	.col.s12.m8.l6.offset-m2.offset-l3
+	div#log.col.s12.m8.l6.offset-m2.offset-l3
 		.card
 			.card-content.grey-text
 				span.card-title Login
@@ -20,14 +20,14 @@ body.lime
 							.input-field.col.s12
 								i.material-icons.prefix account_circle
 								|           
-								input#icon_prefix.validate(type='text', value="")
+								input#icon_prefix.validate(type='text', value="", required)
 								|           
 								label(for='icon_prefix') User Name
 							|         
 							.input-field.col.s12
 								i.material-icons.prefix vpn_key
 								|           
-								input#icon_password.validate(type='text', value="")
+								input#icon_password.validate(type='text', value="", required)
 								|           
 								label(for='icon_password') Password
 							.input-field.col.s6
@@ -35,9 +35,8 @@ body.lime
 									input#test5(type='checkbox')
 									|       
 									label(for='test5') Remember me!
-
-					button.btn.lime.waves-effect.waves-light.right(type='submit', name='action')
-						| Login
+						button.btn.lime.waves-effect.waves-light.right(type='submit', name='action')
+							| Login
 			.card-action.grey.lighten-2
 				a.grey-text(href='#') Forgot Password?
 				a.grey-text.right(href='#') SignUp?

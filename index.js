@@ -10,13 +10,18 @@ var primary_app_object = express();//create an instance of Express class into an
 primary_app_object.set('view engine', 'jade');// Set the view engine
 primary_app_object.set('views', './views');// Where to find the view files
 primary_app_object.use(express.static('./public'));//where to find static files
+
 //initial route for app
 primary_app_object.get('/', function (req, res) {
   res.render('index');
 });
+//login route for app
+primary_app_object.get('/login', function (req, res) {
+  res.render('index');
+});
 
 //sample route
-primary_app_object.get('/login', function (req, res) {
+primary_app_object.get('/hello', function (req, res) {
   res.send('Hello World! login');
 });
 

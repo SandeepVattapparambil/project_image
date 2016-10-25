@@ -25,7 +25,22 @@ box-shadow: 0 1px 0 0 #cddc39;
 .input-field .prefix.active {
 color: #cddc39;
 }
-/* label color for text field*/
+/* label color for check box*/
+[type="checkbox"]:checked + label:before {
+    top: -4px;
+    left: -5px;
+    width: 12px;
+    height: 22px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #cddc39;
+    border-bottom: 2px solid  #cddc39;
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
 
 /*button space*/
 .spaced{
@@ -33,4 +48,9 @@ color: #cddc39;
   margin-bottom:10px;
   margin-left:10px;
   margin-right:10px;
+}
+
+/*margin for log card */
+#log{
+  margin-top:5%;
 }
