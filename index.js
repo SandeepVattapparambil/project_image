@@ -48,7 +48,7 @@ var session_var;//Instanciate a variable for session management
 //initial route for app
 primary_app_object.get('/', function (req, res) {
   session_var = req.session;
-  //session_var.
+  session_var.state = 'initial';
   res.render('login');
 });
 //login route for app
@@ -63,12 +63,18 @@ primary_app_object.post('/login', function (req, res) {
         }
         else if(results.length === 0){
           console.log("No User Record Found");
+          session_var = req.session;
+          session_var.state = 'Login Error';
           var return_value = 'No User Record Found';
+          session_var.message = return_value;
         }
         else if(results.length > 0){
           console.log("User Record Found");
+          session_var = req.session;
           var id = results[0].id;
           var username = results[0].username;
+          session_var.user_id = id;
+          session_var.username = username;
         }
       });
 });
