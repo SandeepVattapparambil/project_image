@@ -59,6 +59,7 @@ primary_app_object.post('/login', function (req, res) {
         console.log(results[0].password);
         if(results != 0){
           console.log('found');
+          res.send('Hello');
         }
       })
 });
