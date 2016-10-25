@@ -12,11 +12,7 @@ var bodyParser = require('body-parser');
 var errorhandler = require('errorhandler');
 var compression = require('compression');
 var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
-var csurf = require('csurf');
-var session = require('express-session');
 var morgan = require('morgan');
-var favicon = require('serve-favicon');
 var mysql = require('mysql');//create mysql object
 var connection = mysql.createConnection({
   host     : 'localhost',//Database host
@@ -41,6 +37,8 @@ primary_app_object.use(bodyParser.urlencoded({ extended: false }));// parse appl
 primary_app_object.use(bodyParser.json());// parse application/json
 primary_app_object.use(errorhandler());
 primary_app_object.use(compression());
+primary_app_object.use(cookieParser());
+primary_app_object.use(morgan('combined'));
 
 //initial route for app
 primary_app_object.get('/', function (req, res) {

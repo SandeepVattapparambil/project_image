@@ -51,6 +51,6 @@ color: #cddc39;
 }
 
 /*margin for log card */
-#log{
-  margin-top:5%;
+div#log{
+  margin-top:50px;
 }
