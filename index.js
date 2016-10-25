@@ -28,6 +28,7 @@ connection.connect(function(err){
   }
 });
 
+primary_app_object.set('port', 3000);
 primary_app_object.set('view engine', 'jade');// Set the view engine
 primary_app_object.set('views', './views');// Where to find the view files
 primary_app_object.use(express.static('./public'));//where to find static files
@@ -49,6 +50,17 @@ primary_app_object.post('/login', function (req, res) {
   var username = req.body.username;
   var password = req.body.password;
   console.log(username);
+  connection.query('SELECT * FROM user', function(err, results) {
+        if (err) throw err
+        console.log(results[0].id);
+        console.log(results[0].first_name);
+        console.log(results[0].last_name);
+        console.log(results[0].username);
+        console.log(results[0].password);
+        if(results != 0){
+          console.log('found');
+        }
+      })
 });
 
 
@@ -62,6 +74,5 @@ primary_app_object.get('/hello', function (req, res) {
 
 
 //server function for the primary_app_object
-primary_app_object.listen(3000, function () {
-  console.log('App listening on port 3000!');
-});
+primary_app_object.listen(primary_app_object.get('port'));
+console.log('Express server listening on port ' + primary_app_object.get('port'));
