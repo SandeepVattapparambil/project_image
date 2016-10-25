@@ -45,8 +45,8 @@ primary_app_object.get('/', function (req, res) {
   res.render('index');
 });
 //login route for app
-primary_app_object.get('/login', function (req, res) {
-  res.render('index');
+primary_app_object.post('/login', function (req, res) {
+  
 });
 
 //sample route
