@@ -23,7 +23,7 @@ var connection = mysql.createConnection({
 connection.connect(function(err){
   if(!err){
     console.log("\nDatabase is connected....\n\n");
-  }else{
+  }else if(err){
     console.log("Database not connected.....\n\n");
   }
 });
@@ -49,19 +49,16 @@ primary_app_object.get('/', function (req, res) {
 primary_app_object.post('/login', function (req, res) {
   var username = req.body.username;
   var password = req.body.password;
-  console.log(username);
-  connection.query('SELECT * FROM user', function(err, results) {
-        if (err) throw err
-        console.log(results[0].id);
-        console.log(results[0].first_name);
-        console.log(results[0].last_name);
-        console.log(results[0].username);
-        console.log(results[0].password);
-        if(results != 0){
-          console.log('found');
-          res.send('Hello');
+  var sql = 'SELECT * FROM user where username="'+username+'"  AND password="'+password+'"';
+  console.log(sql);
+  connection.query(sql, function(err, results) {
+        if(err){
+          console.log("Error");
         }
-      })
+        else{
+          console.log(results);
+        }
+      });
 });
 
 
