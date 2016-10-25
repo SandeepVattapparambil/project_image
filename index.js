@@ -29,7 +29,7 @@ connection.connect(function(err){
   }
 });
 
-primary_app_object.set('port', 3000);
+primary_app_object.set('port', 3000);//Set the port to run the http server
 primary_app_object.set('view engine', 'jade');// Set the view engine
 primary_app_object.set('views', './views');// Where to find the view files
 primary_app_object.use(express.static('./public'));//where to find static files
@@ -40,14 +40,16 @@ primary_app_object.use(bodyParser.json());// parse application/json
 primary_app_object.use(errorhandler());
 primary_app_object.use(compression());
 primary_app_object.use(cookieParser());
-primary_app_object.use(morgan('combined'));
+primary_app_object.use(morgan('combined'));//Set the morgan logging system
 primary_app_object.use(session({secret: 'project_image'}));//Here ‘secret‘ is used for cookie handling etc but we have to put some secret for managing Session in Express.
 
-var session_var;//Instanciate a variable for session
+var session_var;//Instanciate a variable for session management
 
 //initial route for app
 primary_app_object.get('/', function (req, res) {
-  res.render('index');
+  session_var = req.session;
+  //session_var.
+  res.render('login');
 });
 //login route for app
 primary_app_object.post('/login', function (req, res) {
