@@ -12,6 +12,7 @@ var bodyParser = require('body-parser');
 var errorhandler = require('errorhandler');
 var compression = require('compression');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var morgan = require('morgan');
 var mysql = require('mysql');//create mysql object
 var connection = mysql.createConnection({
@@ -40,6 +41,9 @@ primary_app_object.use(errorhandler());
 primary_app_object.use(compression());
 primary_app_object.use(cookieParser());
 primary_app_object.use(morgan('combined'));
+primary_app_object.use(session({secret: 'project_image'}));//Here ‘secret‘ is used for cookie handling etc but we have to put some secret for managing Session in Express.
+
+var session_var;//Instanciate a variable for session
 
 //initial route for app
 primary_app_object.get('/', function (req, res) {
@@ -49,14 +53,20 @@ primary_app_object.get('/', function (req, res) {
 primary_app_object.post('/login', function (req, res) {
   var username = req.body.username;
   var password = req.body.password;
-  var sql = 'SELECT * FROM user where username="'+username+'"  AND password="'+password+'"';
+  var sql = 'SELECT * FROM user where username= "'+username+'" AND password="'+password+'"';
   console.log(sql);
   connection.query(sql, function(err, results) {
         if(err){
-          console.log("Error");
+          console.log("SQL Error");
         }
-        else{
-          console.log(results);
+        else if(results.length === 0){
+          console.log("No User Record Found");
+          var return_value = 'No User Record Found';
+        }
+        else if(results.length > 0){
+          console.log("User Record Found");
+          var id = results[0].id;
+          var username = results[0].username;
         }
       });
 });
