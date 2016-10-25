@@ -1,8 +1,6 @@
 html
 	head
 		title Project Image | Login
-		script(src='js/jquery.js')
-		script(src='js/materialize.js')
 		link(rel='stylesheet', href='http://fonts.googleapis.com/icon?family=Material+Icons')
 		link(rel='stylesheet', href='css/materialize.css')
 		link(rel='stylesheet', href='css/style.css')
@@ -13,6 +11,9 @@ html
 		link(rel='mask-icon', href='favicon/safari-pinned-tab.svg', color='#5bbad5')
 		meta(name='theme-color', content='#ffffff')
 		meta(name="viewport" content="width=device-width, initial-scale=1.0") 
+		script(src='js/jquery.js')
+		script(src='js/materialize.js')
+		script(src='js/app.js')
 body.lime
 .row
 	div.col.s12.m8.l6.offset-m2.offset-l3(style='margin-top:50px;')
@@ -26,7 +27,7 @@ body.lime
 							.input-field.col.s12
 								i.material-icons.prefix account_circle
 								|           
-								input#icon_prefix.validate(name='username', type='text', value="", required)
+								input#icon_username.validate(name='username', type='text', value="", required)
 								|           
 								label(for='icon_prefix') User Name
 							|         
@@ -43,6 +44,8 @@ body.lime
 									label(for='test5') Remember me!
 						button.btn.lime.waves-effect.waves-light.right(type='submit', name='action')
 							| Login
+						button.btn.grey.waves-effect.waves-light.left(id='clear_btn', type='reset', name='action', style='display:none')
+							| Clear
 			.card-action.grey.lighten-2
 				a.grey-text(href='#') Forgot Password?
 				a.grey-text.right(href='#') SignUp?

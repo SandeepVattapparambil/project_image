@@ -67,6 +67,7 @@ primary_app_object.post('/login', function (req, res) {
           session_var.state = 'Login Error';
           var return_value = 'No User Record Found';
           session_var.message = return_value;
+          res.render('login');
         }
         else if(results.length > 0){
           console.log("User Record Found");
