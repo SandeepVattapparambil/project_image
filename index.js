@@ -11,7 +11,6 @@ var responseTime = require('response-time');//Response time middleware for Node.
 var bodyParser = require('body-parser');
 var errorhandler = require('errorhandler');
 var compression = require('compression');
-var timeout = require('connect-timeout');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var csurf = require('csurf');
@@ -37,7 +36,11 @@ primary_app_object.set('view engine', 'jade');// Set the view engine
 primary_app_object.set('views', './views');// Where to find the view files
 primary_app_object.use(express.static('./public'));//where to find static files
 primary_app_object.use(responseTime());// Add the responseTime middleware
-primary_app_object.use(express.errorHandler());// Add the errorHander middleware
+primary_app_object.use(errorhandler());// Add the errorHander middleware
+primary_app_object.use(bodyParser.urlencoded({ extended: false }));// parse application/x-www-form-urlencoded
+primary_app_object.use(bodyParser.json());// parse application/json
+primary_app_object.use(errorhandler());
+primary_app_object.use(compression());
 
 //initial route for app
 primary_app_object.get('/', function (req, res) {
